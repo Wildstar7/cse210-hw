@@ -4,10 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        string playAgain = "no";
-        while (playAgain == "yes")
+        string playAgain = "yes";
+        while (playAgain == "yes" || playAgain == "y")
         {
-            if (playAgain == "yes")
+            if (playAgain == "yes" || playAgain == "y")
             {
                 playAgain = "no";
             }
@@ -35,10 +35,16 @@ class Program
                 {
                     Console.WriteLine("You guessed it!");
                     Console.WriteLine($"You got it in {numGuesses} guesses.");
-                    Console.WriteLine("Do you want to play again? ");
+                    Console.WriteLine("Do you want to play again (yes/no)? ");
                     playAgain = Console.ReadLine();
+                    playAgain = playAgain.ToLower();
+
+                    if (playAgain != "yes" && playAgain != "y")
+                    {
+                        Console.WriteLine("Thank you for playing! Goodbye!");
+                    }
                 }
-                else { }
+                else { Console.WriteLine("Error!"); }
             }
         }
     }
