@@ -9,11 +9,11 @@ class Program
 
 
         Console.WriteLine("Welcome to the Journal Program!");
+        Journal currentJournal = new Journal();
+        PromptGenerator freshPrompts = new PromptGenerator();
 
         do
         {
-            Journal currentJournal = new Journal();
-            PromptGenerator freshPrompts = new PromptGenerator();
             userChoice = DisplayMenu();
 
             switch (userChoice)
@@ -21,28 +21,40 @@ class Program
                 // Write
                 case 1:
                     Console.Clear();
+                    Console.Write("\x1b[3J");
                     Entry currentEntry = new Entry();
                     DateTime currentTime = DateTime.Now;
                     currentEntry._date = currentTime.ToShortDateString();
                     currentEntry._promptText = freshPrompts.GetRandomPrompt();
                     Console.WriteLine(currentEntry._promptText);
                     currentEntry._entryText = (Console.ReadLine());
-                    currentEntry.Display();
+                    currentJournal.AddEntry(currentEntry);
+                    Console.Write("Press <ENTER> return to main menu . . .");
+                    Console.ReadLine();
                     break;
                 // Display
                 case 2:
                     Console.Clear();
-                    Console.WriteLine("Display past entries");
+                    Console.Write("\x1b[3J");
+                    currentJournal.DisplayAll();
+                    Console.Write("Press <ENTER> to return to main menu . . .");
+                    Console.ReadLine();
                     break;
                 // Load
                 case 3:
                     Console.Clear();
+                    Console.Write("\x1b[3J");
                     Console.WriteLine("Load from file");
+                    Console.Write("Press <ENTER> to return to main menu . . .");
+                    Console.ReadLine();
                     break;
                 //Save
                 case 4:
                     Console.Clear();
+                    Console.Write("\x1b[3J");
                     Console.WriteLine("Save to file");
+                    Console.Write("Press <ENTER> to return to main menu . . .");
+                    Console.ReadLine();
                     break;
                 default:
                     break;
@@ -58,6 +70,9 @@ class Program
     {
         while (true)
         {
+            Console.Clear();
+            Console.Write("\x1b[3J");
+            Console.WriteLine("Welcome to the JOURNAL PROGRAM");
             Console.WriteLine("Please select from the following:");
             Console.WriteLine("1. Write");
             Console.WriteLine("2. Display");
@@ -69,6 +84,8 @@ class Program
             if (!int.TryParse(Console.ReadLine(), out int menuOption) || menuOption < 1 || menuOption > 5)
             {
                 Console.WriteLine("ERROR: Enter a number from 1-5");
+                Console.Write("Press <ENTER> to continue . . .");
+                Console.ReadLine();
                 continue;
             }
 

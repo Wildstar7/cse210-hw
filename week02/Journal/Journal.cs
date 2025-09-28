@@ -1,14 +1,23 @@
 public class Journal
 {
-    public List<Entry> _entries;
+    public List<Entry> _entries = new List<Entry>();
 
     public void AddEntry(Entry newEntry)
     {
-        Console.WriteLine();
+        _entries.Add(newEntry);
     }
     public void DisplayAll()
     {
-        Console.WriteLine();
+        if (_entries.Count == 0)
+        {
+            Console.WriteLine("There are no entries yet.");
+        }
+
+        foreach (Entry entry in _entries)
+        {
+            entry.Display();
+            Console.WriteLine();
+        }
     }
     public void SaveToFile(string File)
     {
