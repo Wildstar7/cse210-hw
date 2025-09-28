@@ -12,22 +12,34 @@ class Program
 
         do
         {
+            Journal currentJournal = new Journal();
+            PromptGenerator freshPrompts = new PromptGenerator();
             userChoice = DisplayMenu();
+
             switch (userChoice)
             {
+                // Write
                 case 1:
                     Console.Clear();
-                    PromptGenerator prompt = new PromptGenerator();
-                    Console.WriteLine(prompt.GetRandomPrompt());
+                    Entry currentEntry = new Entry();
+                    DateTime currentTime = DateTime.Now;
+                    currentEntry._date = currentTime.ToShortDateString();
+                    currentEntry._promptText = freshPrompts.GetRandomPrompt();
+                    Console.WriteLine(currentEntry._promptText);
+                    currentEntry._entryText = (Console.ReadLine());
+                    currentEntry.Display();
                     break;
+                // Display
                 case 2:
                     Console.Clear();
                     Console.WriteLine("Display past entries");
                     break;
+                // Load
                 case 3:
                     Console.Clear();
                     Console.WriteLine("Load from file");
                     break;
+                //Save
                 case 4:
                     Console.Clear();
                     Console.WriteLine("Save to file");
@@ -35,7 +47,7 @@ class Program
                 default:
                     break;
             }
-        } while (userChoice != 5);
+        } while (userChoice != 5);  // Quit
 
         Console.WriteLine("Goodbye!");
 
