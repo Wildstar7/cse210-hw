@@ -7,7 +7,6 @@ class Program
     {
         int userChoice;
 
-        Console.Clear();
         Console.WriteLine("Welcome to the Journal Program!");
 
         do
@@ -16,15 +15,19 @@ class Program
             switch (userChoice)
             {
                 case 1:
+                    Console.Clear();
                     Console.WriteLine("Display prompt");
                     break;
                 case 2:
+                    Console.Clear();
                     Console.WriteLine("Display past entries");
                     break;
                 case 3:
+                    Console.Clear();
                     Console.WriteLine("Load from file");
                     break;
                 case 4:
+                    Console.Clear();
                     Console.WriteLine("Save to file");
                     break;
                 default:
@@ -49,12 +52,12 @@ class Program
             Console.WriteLine("5. Quit");
             Console.Write("What would you like to do? ");
 
-            if (!int.TryParse(Console.ReadLine(), out int menuOption))
+            if (!int.TryParse(Console.ReadLine(), out int menuOption) || menuOption < 1 || menuOption > 5)
             {
-                Console.WriteLine("Enter a number 1-5: ");
+                Console.WriteLine("ERROR: Enter a number from 1-5");
                 continue;
             }
-            
+
             return menuOption;
         }
     }
