@@ -20,8 +20,8 @@ class Program
             {
                 // Write
                 case 1:
-                    Console.Clear();
-                    Console.Write("\x1b[3J");
+                    Console.Clear();  // Clear screen
+                    Console.Write("\x1b[3J");  // Clear scrollback buffer
                     Entry currentEntry = new Entry();
                     DateTime currentTime = DateTime.Now;
                     currentEntry._date = currentTime.ToShortDateString();
@@ -34,25 +34,37 @@ class Program
                     break;
                 // Display
                 case 2:
-                    Console.Clear();
-                    Console.Write("\x1b[3J");
+                    Console.Clear();  // Clear screen
+                    Console.Write("\x1b[3J");  // Clear scrollback buffer
                     currentJournal.DisplayAll();
                     Console.Write("Press <ENTER> to return to main menu . . .");
                     Console.ReadLine();
                     break;
                 // Load
                 case 3:
-                    Console.Clear();
-                    Console.Write("\x1b[3J");
-                    Console.WriteLine("Load from file");
+                    Console.Clear();  // Clear screen
+                    Console.Write("\x1b[3J");  // Clear scrollback buffer
+
+                    // Get file to load from user
+                    Console.Write("What file would you like to load? ");
+                    string fileToLoad = Console.ReadLine();
+
+                    currentJournal.LoadFromFile(fileToLoad);
+                    Console.WriteLine($"{fileToLoad} has been loaded");
                     Console.Write("Press <ENTER> to return to main menu . . .");
                     Console.ReadLine();
                     break;
                 //Save
                 case 4:
-                    Console.Clear();
-                    Console.Write("\x1b[3J");
-                    Console.WriteLine("Save to file");
+                    Console.Clear();  // Clear screen
+                    Console.Write("\x1b[3J");  // Clear scrollback buffer
+
+                    // Get filename from user
+                    Console.Write("What would you like to call the file? ");
+                    string fileToSave = Console.ReadLine();
+
+                    currentJournal.SaveToFile(fileToSave);
+                    Console.WriteLine($"Your journal has been saved to {fileToSave}");
                     Console.Write("Press <ENTER> to return to main menu . . .");
                     Console.ReadLine();
                     break;
@@ -70,8 +82,8 @@ class Program
     {
         while (true)
         {
-            Console.Clear();
-            Console.Write("\x1b[3J");
+            Console.Clear();  // Clear screen
+            Console.Write("\x1b[3J");  // Clear scrollback buffer
             Console.WriteLine("Welcome to the JOURNAL PROGRAM");
             Console.WriteLine("Please select from the following:");
             Console.WriteLine("1. Write");
