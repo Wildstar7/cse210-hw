@@ -7,6 +7,7 @@ class Program
     {
         int userChoice;
 
+
         Console.WriteLine("Welcome to the Journal Program!");
 
         do
@@ -16,7 +17,8 @@ class Program
             {
                 case 1:
                     Console.Clear();
-                    Console.WriteLine("Display prompt");
+                    PromptGenerator prompt = new PromptGenerator();
+                    Console.WriteLine(prompt.GetRandomPrompt());
                     break;
                 case 2:
                     Console.Clear();
