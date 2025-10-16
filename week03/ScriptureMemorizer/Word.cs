@@ -6,7 +6,7 @@ public class Word
 
     // Constructors
     public Word(string text)
-    {
+    { 
 
     }
 
@@ -18,7 +18,7 @@ public class Word
 
     public void Show()
     {
-
+        Console.Write(_text);
     }
 
     public bool IsHidden()
