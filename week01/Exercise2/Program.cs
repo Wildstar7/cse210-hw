@@ -4,10 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
+        // Get grade percentage, convert to float
         Console.Write("What is your grade percentage? ");
         string stringGradePercentage = Console.ReadLine();
-        int gradePercentage = int.Parse(stringGradePercentage);
+        float gradePercentage = float.Parse(stringGradePercentage);
 
+        // Determine letter grade based on grade percentage
         string letterGrade = "";
         if (gradePercentage >= 90)
         {
@@ -30,8 +32,8 @@ class Program
             letterGrade = "F";
         }
 
-
-        int lastDigit = gradePercentage % 10;
+        // Determine '+' or '-' to append to letter grade
+        float lastDigit = gradePercentage % 10;
         string gradeSign = "";
 
         if (gradePercentage >= 100)
@@ -53,7 +55,8 @@ class Program
 
         string fullLetterGrade = $"{letterGrade}{gradeSign}";
 
-        if (fullLetterGrade == "A+")
+        // Remove improper '+' or '-' from edge cases like A+, F+, F-
+        if (fullLetterGrade == "A+" && gradePercentage <= 100)
         {
             fullLetterGrade = "A";
         }
@@ -61,8 +64,26 @@ class Program
         {
             fullLetterGrade = "F";
         }
-        else {}
+        else { }
 
-        Console.WriteLine($"You got a {fullLetterGrade}");
+        // Determine proper grammer ('a' vs 'an') to display letter grade
+        if (letterGrade == "A" || letterGrade == "F")
+        {
+            Console.WriteLine($"You got an {fullLetterGrade}");
+        }
+        else
+        {
+            Console.WriteLine($"You got a {fullLetterGrade}");
+        }
+
+        // Determine if class was passed
+        if (gradePercentage >= 70)
+        {
+            Console.WriteLine("You passed!");
+        }
+        else
+        {
+            Console.WriteLine("Sorry. . . maybe next term.");
+        }
     }
 }
