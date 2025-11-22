@@ -1,33 +1,49 @@
 public class Word
 {
     // Variables
-    string _text;
-    bool _isHidden;
+    private string _text;
+    private bool _isHidden = false;  // by default, 'Word' is NOT hidden
 
     // Constructors
     public Word(string text)
-    { 
+    {
 
     }
 
     // Methods
     public void Hide()
     {
-
+        _isHidden = true;
     }
 
     public void Show()
     {
-        Console.Write(_text);
+        _isHidden = false;
     }
 
     public bool IsHidden()
     {
-        return true;
+        if (_isHidden == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public string GetDisplayText()
     {
-        return "";
+        if (IsHidden() == true)
+        {
+            int wordLength = _text.Length;
+            string blank = new string('_', wordLength);
+            return blank;
+        }
+        else
+        {
+            return _text;
+        }
     }
 }
