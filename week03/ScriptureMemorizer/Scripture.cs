@@ -7,7 +7,15 @@ public class Scripture
     // Constructors
     public Scripture(Reference Reference, string text)
     {
+        _reference = Reference;
+        _words = new List<Word>();
 
+        string[] splitWords = text.Split(' ');
+
+        foreach (string w in splitWords)
+        {
+            _words.Add(new Word(w));
+        }
     }
 
     // Methods
@@ -40,16 +48,14 @@ public class Scripture
 
     public bool IsCompletelyHidden()
     {
-        bool anyVisible = false;
         foreach (Word w in _words)
         {
             if (!w.IsHidden())
             {
-                anyVisible = true;
-                break;
+                return false;
             }
         }
 
-        return anyVisible;
+        return true;
     }
 }

@@ -2,12 +2,13 @@ public class Word
 {
     // Variables
     private string _text;
-    private bool _isHidden = false;  // by default, 'Word' is NOT hidden
+    private bool _isHidden = false;
 
     // Constructors
     public Word(string text)
     {
-
+        _text = text;
+        _isHidden = false;  // by default, 'Word' is NOT hidden
     }
 
     // Methods
