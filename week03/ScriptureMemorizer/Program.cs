@@ -1,18 +1,51 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
+
+// I've added a CSV file that contains a list of the Doctrinal Mastery
+// verses from the Book of Mormon. The program selects one of those
+// scriptures at random for the user to memorize.
 
 class Program
 {
     static void Main(string[] args)
     {
-        // Create reference, text, and scripture objects
-        Reference reference = new Reference("2 Nephi", 2, 1, 2);
-        string text = "And now, Jacob, I speak unto you: Thou art my firstborn in the days of my tribulation in the wilderness. And behold, in thy childhood thou hast suffered afflictions and much sorrow, because of the rudeness of thy brethren. Nevertheless, Jacob, my firstborn in the wilderness, thou knowest the greatness of God; and he shall consecrate thine afflictions for thy gain.";
-        Scripture scripture = new Scripture(reference, text);
+        // Read CSV file and create list of scriptures
+        string[] lines = File.ReadAllLines("scriptureList.csv");
+        List<Scripture> doctrinalMasteryList = new List<Scripture>();
+
+        for (int i = 1; i < lines.Length; i++)  // skip header row
+        {
+            string[] scriptureParts = lines[i].Split("||");
+
+            string book = scriptureParts[0];
+            int chapter = int.Parse(scriptureParts[1]);
+            int verse = int.Parse(scriptureParts[2]);
+            if (int.TryParse(scriptureParts[3], out int endVerse))
+            {
+                // catch valid number
+            }
+            else
+            {
+                endVerse = 0;  // if it's empty string, etc.
+            }
+            string passage = scriptureParts[4];
+
+            Reference reference = new Reference(book, chapter, verse, endVerse);
+
+            Scripture scripture = new Scripture(reference, passage);
+            doctrinalMasteryList.Add(scripture);
+        }
+
+        // Choose a random scripture from the list
+        Random random = new Random();
+        int index = random.Next(doctrinalMasteryList.Count);
+        Scripture selection = doctrinalMasteryList[index];
 
         // Loop until scripture completely hidden or user quits
-        while (!scripture.IsCompletelyHidden())
+        while (!selection.IsCompletelyHidden())
         {
-            DisplayScripture(scripture);
+            DisplayScripture(selection);
 
             Console.WriteLine("\nPress <ENTER> to hide more words or type 'quit' to exit");
             string userInput = Console.ReadLine();
@@ -22,7 +55,7 @@ class Program
                 break;
             }
 
-            scripture.HideRandomWords(3);
+            selection.HideRandomWords(3);
         }
     }
 
