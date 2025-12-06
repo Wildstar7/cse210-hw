@@ -3,28 +3,32 @@ using System;
 class Program
 {
     static void Main(string[] args)
-    {
-        int menuLoop = 0;
-        while (menuLoop == 0)
+    {       
+        int menuLoop = 1;
+        while (menuLoop != 0)
         {
-            Console.WriteLine("Please select an activity:/n");
-            Console.WriteLine("1) Breathing Activity");
-            Console.WriteLine("2) Reflection Activity");
-            Console.WriteLine("3) Listing Activity");
-            Console.WriteLine("4) Quit");
+            Console.Clear();
+            Console.WriteLine("Mindfulness Program:\n");
+            Console.WriteLine("  1) Start Breathing Activity");
+            Console.WriteLine("  2) Start Reflecting Activity");
+            Console.WriteLine("  3) Start Listing Activity");
+            Console.WriteLine("  4) Quit");
 
-            Console.Write("/nWhat is your selection? ");
+            Console.Write("\nSelect a choice from the menu: ");
             string userSelection = Console.ReadLine();
             int userSelectionInt = int.Parse(userSelection);
 
             switch (userSelectionInt)
             {
                 case 1:
-                    Console.WriteLine("Breathing Activity");
+                    BreathingActivity breathing = new BreathingActivity();
+                    breathing.DisplayStartingMessage();
+                    breathing.Run();
+                    breathing.DisplayEndingMessage();
                     break;
 
                 case 2:
-                    Console.WriteLine("Reflection Activity");
+                    //ReflectingActivity reflecting = new ReflectingActivity();
                     break;
 
                 case 3:
@@ -32,7 +36,7 @@ class Program
                     break;
 
                 case 4:
-                    Console.WriteLine("Quitting Time!");
+                    menuLoop = 0;
                     break;
 
                 default:

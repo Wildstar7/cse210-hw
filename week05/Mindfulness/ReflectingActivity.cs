@@ -5,7 +5,7 @@ public class ReflectingActivity : Activity
     private List<string> _questions = new List<string>();
 
     // Constructors
-    public ReflectingActivity()
+    public ReflectingActivity(string name, string description) : base(name, description)
     {
 
     }

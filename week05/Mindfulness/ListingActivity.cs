@@ -5,7 +5,7 @@ public class ListingActivity : Activity
     private List<string> _prompts = new List<string>();
 
     // Constructors
-    public ListingActivity()
+    public ListingActivity(string name, string description) : base(name, description)
     {
 
     }
