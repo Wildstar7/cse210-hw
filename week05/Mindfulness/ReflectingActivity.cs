@@ -5,7 +5,11 @@ public class ReflectingActivity : Activity
     private List<string> _questions = new List<string>();
 
     // Constructors
-    public ReflectingActivity(string name, string description) : base(name, description)
+    public ReflectingActivity() 
+        : base(
+            "Reflecting Activity",
+            "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life."
+            )
     {
 
     }

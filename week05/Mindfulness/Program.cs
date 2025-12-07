@@ -32,11 +32,17 @@ class Program
                     break;
 
                 case "2":
-                    //ReflectingActivity reflecting = new ReflectingActivity();
+                    ReflectingActivity reflecting = new ReflectingActivity();
+                    reflecting.DisplayStartingMessage();
+                    reflecting.Run();
+                    reflecting.DisplayEndingMessage();
                     break;
 
                 case "3":
-                    Console.WriteLine("Listing Activity");
+                    ListingActivity listing = new ListingActivity();
+                    listing.DisplayStartingMessage();
+                    listing.Run();
+                    listing.DisplayEndingMessage();
                     break;
 
                 case "4":
@@ -50,4 +56,14 @@ class Program
             }
         }
     }
+    
+    // It doesn't seem like trying to set up this function is going to
+    // work, so I'll manually do this for each activity
+
+    // static void ExecuteMenuOption(Activity chosenActivity)
+    // {
+    //     chosenActivity.DisplayStartingMessage();
+    //     chosenActivity.Run();
+    //     chosenActivity.DisplayEndingMessage();
+    // }
 }
