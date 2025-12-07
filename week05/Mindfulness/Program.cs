@@ -24,6 +24,7 @@ class Program
                     BreathingActivity breathing = new BreathingActivity();
                     breathing.DisplayStartingMessage();
                     breathing.Run();
+                    breathing.ShowCountDown(10);
                     breathing.DisplayEndingMessage();
                     break;
 
