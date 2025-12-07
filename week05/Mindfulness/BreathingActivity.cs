@@ -13,28 +13,23 @@ public class BreathingActivity : Activity
     // Methods
     public void Run()
     {        
-        Console.Clear();
-        
-        for (int i = 3; i <= 10; i++)
-        {
-            Console.Write("Breathe in . . . ");
-            ShowCountDown(i, true);
-            Console.WriteLine();
-            
-            Console.Write("Breathe out . . . ");
-            ShowCountDown(i);
-            Console.WriteLine("\n");
-        }
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(GetDuration());
 
-        for (int i = 9; i >= 3; i--)
-        {
+        // The activity won't end perfectly on time, but it will at
+        // least finish the current breath before exiting the activity
+        while (DateTime.Now < endTime)
+        {    
             Console.Write("Breathe in . . . ");
-            ShowCountDown(i, true);
+            ShowCountDown(3, true);
             Console.WriteLine();
-            
-            Console.Write("Breathe out . . . ");
-            ShowCountDown(i);
-            Console.WriteLine("\n");
+
+            if (DateTime.Now < endTime)
+            {
+                Console.Write("Breathe out . . . ");
+                ShowCountDown(3);
+                Console.WriteLine("\n");
+            }
         }
     }
 }

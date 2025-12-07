@@ -4,6 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {       
+        // For the Breathing Activity, I've added functionality to the
+        // ShowCountdown method so that it can be used to count up for
+        // breathing in.
+        
+        
         int menuLoop = 1;
         while (menuLoop != 0)
         {
@@ -16,32 +21,31 @@ class Program
 
             Console.Write("\nSelect a choice from the menu: ");
             string userSelection = Console.ReadLine();
-            int userSelectionInt = int.Parse(userSelection);
 
-            switch (userSelectionInt)
+            switch (userSelection)
             {
-                case 1:
+                case "1":
                     BreathingActivity breathing = new BreathingActivity();
                     breathing.DisplayStartingMessage();
                     breathing.Run();
-                    breathing.ShowCountDown(10);
                     breathing.DisplayEndingMessage();
                     break;
 
-                case 2:
+                case "2":
                     //ReflectingActivity reflecting = new ReflectingActivity();
                     break;
 
-                case 3:
+                case "3":
                     Console.WriteLine("Listing Activity");
                     break;
 
-                case 4:
+                case "4":
                     menuLoop = 0;
                     break;
 
                 default:
-                    Console.WriteLine("Invalid Option!!!!");
+                    Console.WriteLine("Invalid option, please try again.");
+                    Thread.Sleep(1000);
                     break;
             }
         }

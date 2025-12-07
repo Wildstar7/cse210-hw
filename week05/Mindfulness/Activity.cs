@@ -37,7 +37,7 @@ public class Activity
         Console.Clear();
         Console.WriteLine("Wonderful job!");
         ShowSpinner(3);
-        Console.WriteLine($"You have completed the {_name} for {_duration} seconds!");
+        Console.WriteLine($"You completed the {_name} for {_duration} seconds!");
         ShowSpinner(5);
     }
 
@@ -47,6 +47,8 @@ public class Activity
         string backspaces = new string('\b', animationLength);
         string spaces = new string(' ', animationLength);
         List<string> spinnerStrings = new List<string> {"/","-","\\","|"};
+        
+        // Experimenting with some other ideas for spinners/animations
         // {
         //     "X         ",
         //     " +        ",
@@ -168,5 +170,10 @@ public class Activity
                 j = 0;
             }
         }
+    }
+
+    public int GetDuration()
+    {
+        return _duration;
     }
 }
