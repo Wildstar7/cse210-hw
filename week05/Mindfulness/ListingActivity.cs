@@ -17,7 +17,8 @@ public class ListingActivity : Activity
     // Methods
     public void Run()
     {
-
+        Console.WriteLine("Listing Activity Placeholder");
+        ShowSpinner(GetDuration());
     }
 
     public void GetRandomPrompt()

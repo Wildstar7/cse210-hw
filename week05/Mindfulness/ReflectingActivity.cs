@@ -17,7 +17,8 @@ public class ReflectingActivity : Activity
     // Methods
     public void Run()
     {
-
+            Console.WriteLine("Reflecting Activity Placeholder");
+            ShowSpinner(GetDuration());
     }
 
     public string GetRandomPrompt()
