@@ -10,18 +10,13 @@ public class Swimming : Activity
     }
 
     // Methods
+    public override string GetActivityName()
+    {
+        return "Swimming";
+    }
+
     public override double CalculateDistance()
     {
-        return _laps * 50 / 1000 * 0.52;
-    }
-
-    public override double CalculateSpeed()
-    {
-        return CalculateDistance() / GetDuration();
-    }
-
-    public override double CalculatePace()
-    {
-        return GetDuration() / CalculateDistance();
+        return _laps * 50.0 / 1000.0 * 0.62;
     }
 }

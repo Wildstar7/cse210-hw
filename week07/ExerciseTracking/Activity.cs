@@ -13,8 +13,8 @@ public abstract class Activity
 
     // Methods
     public abstract double CalculateDistance();
-    public abstract double CalculateSpeed();
-    public abstract double CalculatePace();
+    public abstract string GetActivityName();
+
     public string GetDate()
     {
         return _date;
@@ -23,5 +23,24 @@ public abstract class Activity
     public int GetDuration()
     {
         return _duration;
+    }
+    
+    public virtual double CalculateSpeed()
+    {
+        return CalculateDistance() / GetDuration() * 60.0;
+    }
+
+    public virtual double CalculatePace()
+    {
+        return GetDuration() / CalculateDistance();
+    }
+
+    public virtual string GetSummary()
+    {
+        double distance = Math.Round(CalculateDistance(), 2);
+        double speed = Math.Round(CalculateSpeed(), 2);
+        double pace = Math.Round(CalculatePace(), 2);
+
+        return $"{GetDate()} {GetActivityName()} ({GetDuration()} min) - Distance: {distance} miles, Speed: {speed} mph, Pace: {pace} min per mile";
     }
 }

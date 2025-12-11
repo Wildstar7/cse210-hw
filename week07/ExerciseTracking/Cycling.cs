@@ -1,27 +1,22 @@
 public class Cycling : Activity
 {
     // Variables
-    private int _speed;
+    private double _speed;
 
     // Constructors
-    public Cycling(string date, int duration, int speed) : base(date, duration)
+    public Cycling(string date, int duration, double speed) : base(date, duration)
     {
         _speed = speed;
     }
 
     // Methods
+    public override string GetActivityName()
+    {
+        return "Cycling";
+    }
+
     public override double CalculateDistance()
     {
-        
-    }
-
-    public override double CalculateSpeed()
-    {
-        return _speed;
-    }
-
-    public override double CalculatePace()
-    {
-        return 60 / _speed;
+        return _speed * GetDuration() / 60;
     }
 }
