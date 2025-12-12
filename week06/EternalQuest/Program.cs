@@ -8,7 +8,7 @@ class Program
         while (menuLoop != 0)
         {
             Console.Clear();
-            Console.WriteLine("Menu Options:\n");
+            Console.WriteLine("Eternal Quest\n");
             Console.WriteLine("  1) Create New Goal");
             Console.WriteLine("  2) List Goals");
             Console.WriteLine("  3) Save Goals");
@@ -38,20 +38,33 @@ class Program
                     switch (userSubselection)
                         {
                             case "1":
-                                Console.WriteLine("Create simple goal here.");
+                                Console.Clear();
+                                Console.WriteLine("Implement simple goal here.");
+                                Console.WriteLine("Going back to Main Menu...");
+                                Thread.Sleep(2000);
+                                submenuLoop = 0;
                                 break;
                             case "2":
-                                Console.WriteLine("Create eternal goal here.");
+                                Console.Clear();
+                                Console.WriteLine("Implement eternal goal here.");
+                                Console.WriteLine("Going back to Main Menu...");
+                                Thread.Sleep(2000);
+                                submenuLoop = 0;
                                 break;
                             case "3":
-                                Console.WriteLine("Create checklist goal here.");
+                                Console.Clear();
+                                Console.WriteLine("Implement checklist goal here.");
+                                Console.WriteLine("Going back to Main Menu...");
+                                Thread.Sleep(2000);
+                                submenuLoop = 0;
                                 break;
                             case "4":
                                 submenuLoop = 0;
                                 break;
                             default:
+                                Console.Clear();
                                 Console.WriteLine("Invalid option, please try again.");
-                                Thread.Sleep(1000);
+                                Thread.Sleep(1000);  // Pause for a second so the user can read the message
                                 break;
                         }
 
@@ -59,29 +72,42 @@ class Program
                     break;
 
                 case "2":
-                    Console.WriteLine("List Goals");
+                    Console.Clear();
+                    Console.WriteLine("Implement list goals");
+                    Console.WriteLine("Going back to Main Menu...");
+                    Thread.Sleep(2000);
                     break;
 
                 case "3":
-                    Console.WriteLine("Save Goals");
+                    Console.Clear();
+                    Console.WriteLine("Implement save goals");
+                    Console.WriteLine("Going back to Main Menu...");
+                    Thread.Sleep(2000);
                     break;
                 
                 case "4":
-                    Console.WriteLine("Load Goals");
+                    Console.Clear();
+                    Console.WriteLine("Implement load goals");
+                    Console.WriteLine("Going back to Main Menu...");
+                    Thread.Sleep(2000);
                     break;
 
                 case "5":
-                    Console.WriteLine("Record Event");
+                    Console.Clear();
+                    Console.WriteLine("Implement record event");
+                    Console.WriteLine("Going back to Main Menu...");
+                    Thread.Sleep(2000);
                     break;
 
                 case "6":
-                    Console.WriteLine("Quitting");
+                    Console.WriteLine("\nQuitting...");
+                    Thread.Sleep(1000);
                     menuLoop = 0;
                     break;
 
                 default:
                     Console.WriteLine("Invalid option, please try again.");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(1000);  // Pause for a second so the user can read the message
                     break;
             }
         }
